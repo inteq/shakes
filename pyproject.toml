@@ -1,0 +1,36 @@
+[build-system]
+build-backend = "poetry_dynamic_versioning.backend"
+requires = ["poetry-core>=1.6.0", "poetry-dynamic-versioning"]
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_missing_imports = true
+packages = ["shakes"]
+strict = false
+
+[tool.poetry]
+authors = ["Justin Simms <justin.simms@gmail.com>"]
+description = "Rock, Paper, Scissors Service"
+name = "shakes"
+packages = [{include = "shakes", from = "src"}]
+# NB: DO NOT CHANGE THIS VERSION
+# poetry-dynamic-versioning computes the version
+version = "0.0.0"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+mypy = "^1.11.2"
+vulture = "^2.11"
+deptry = "^0.20.0"
+fastapi = {extras = ["standard"], version = "^0.114.0"}
+redis = {extras = ["hiredis"], version = "^5.0.8"}
+requests = "^2.32.3"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+fix-shallow-repository = true
+pattern = "default-unprefixed"
+strict = false
+
+[tool.poetry-dynamic-versioning.substitution]
+folders = [{path = "src/shakes"}]
